@@ -23,7 +23,7 @@ public class ClientService {
         return clientRepository.save(client);
     }
 
-    public ClientDomain searchByCpf(String cpf){
+    public ClientDomain findByCpf(String cpf){
         return clientRepository.findUserByCpf(cpf)
                 .orElseThrow(() -> new IllegalArgumentException("Client Not found"));
     }

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class CardDomain {
 
     private Long id;
-    private String number;
+    private String cardNumber;
     private LocalDate expireDate;
     private String cvv;
     private double limit;
@@ -16,20 +16,28 @@ public class CardDomain {
     public CardDomain() {
     }
 
-    public CardDomain(Long id, String number,
+    public CardDomain(String cardNumber,
                       LocalDate expireDate,
                       double limit, String cvv,
                       LocalDate lastUpdateLimit,
                       Integer invoiceDueDate,
                       ClientDomain clientDomain) {
-        this.id = id;
-        this.number = number;
+        this.cardNumber = cardNumber;
         this.expireDate = expireDate;
         this.limit = limit;
         this.cvv = cvv;
         this.lastUpdateLimit = lastUpdateLimit;
         this.invoiceDueDate = invoiceDueDate;
         this.clientDomain = clientDomain;
+    }
+
+    public CardDomain(String cardNumber, LocalDate expireDate, double limit, String cvv, LocalDate lastUpdateLimit, Integer invoiceDueDate) {
+        this.cardNumber = cardNumber;
+        this.expireDate = expireDate;
+        this.limit = limit;
+        this.cvv = cvv;
+        this.lastUpdateLimit = lastUpdateLimit;
+        this.invoiceDueDate = invoiceDueDate;
     }
 
     public Long getId() {
@@ -40,12 +48,12 @@ public class CardDomain {
         this.id = id;
     }
 
-    public String getNumber() {
-        return number;
+    public String getCardNumber() {
+        return cardNumber;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
     }
 
     public LocalDate getExpireDate() {
