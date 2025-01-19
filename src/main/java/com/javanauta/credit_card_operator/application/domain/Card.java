@@ -2,7 +2,7 @@ package com.javanauta.credit_card_operator.application.domain;
 
 import java.time.LocalDate;
 
-public class Card {
+public class CardDomain {
 
     private Long id;
     private String number;
@@ -13,10 +13,10 @@ public class Card {
     private Integer invoiceDueDate;
     private Client client;
 
-    public Card() {
+    public CardDomain() {
     }
 
-    public Card(Long id, String number,
+    public CardDomain(Long id, String number,
                 LocalDate expireDate,
                 double limit, String cvv,
                 LocalDate lastUpdateLimit,
