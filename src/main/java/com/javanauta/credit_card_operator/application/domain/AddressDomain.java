@@ -9,18 +9,18 @@ public class AddressDomain {
     private String city;
     private String state;
     private String cep;
-    private Client client;
+    private ClientDomain clientDomain;
 
     public AddressDomain() {
     }
 
     public AddressDomain(Long id, String street,
-                   Client client, String cep,
-                   String state, String city,
-                   String complement, Long number) {
+                         ClientDomain clientDomain, String cep,
+                         String state, String city,
+                         String complement, Long number) {
         this.id = id;
         this.street = street;
-        this.client = client;
+        this.clientDomain = clientDomain;
         this.cep = cep;
         this.state = state;
         this.city = city;
@@ -84,11 +84,11 @@ public class AddressDomain {
         this.cep = cep;
     }
 
-    public Client getClient() {
-        return client;
+    public ClientDomain getClient() {
+        return clientDomain;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClient(ClientDomain clientDomain) {
+        this.clientDomain = clientDomain;
     }
 }

@@ -11,17 +11,17 @@ public class CardDomain {
     private double limit;
     private LocalDate lastUpdateLimit;
     private Integer invoiceDueDate;
-    private Client client;
+    private ClientDomain clientDomain;
 
     public CardDomain() {
     }
 
     public CardDomain(Long id, String number,
-                LocalDate expireDate,
-                double limit, String cvv,
-                LocalDate lastUpdateLimit,
-                Integer invoiceDueDate,
-                Client client) {
+                      LocalDate expireDate,
+                      double limit, String cvv,
+                      LocalDate lastUpdateLimit,
+                      Integer invoiceDueDate,
+                      ClientDomain clientDomain) {
         this.id = id;
         this.number = number;
         this.expireDate = expireDate;
@@ -29,7 +29,7 @@ public class CardDomain {
         this.cvv = cvv;
         this.lastUpdateLimit = lastUpdateLimit;
         this.invoiceDueDate = invoiceDueDate;
-        this.client = client;
+        this.clientDomain = clientDomain;
     }
 
     public Long getId() {
@@ -88,11 +88,11 @@ public class CardDomain {
         this.invoiceDueDate = invoiceDueDate;
     }
 
-    public Client getClient() {
-        return client;
+    public ClientDomain getClient() {
+        return clientDomain;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClient(ClientDomain clientDomain) {
+        this.clientDomain = clientDomain;
     }
 }
