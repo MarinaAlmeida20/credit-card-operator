@@ -7,7 +7,7 @@ import java.util.Optional;
 // Abstraction
 public interface IClientRepository {
 
-    ClientDomain save(ClientDomain clientDomain);
+    ClientDomain saveUser(ClientDomain clientDomain);
 
     Boolean findUserByEmail(String email);
 

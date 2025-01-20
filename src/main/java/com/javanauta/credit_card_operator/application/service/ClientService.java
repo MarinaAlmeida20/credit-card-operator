@@ -20,7 +20,7 @@ public class ClientService {
 
         CardDomain card = generateCard.generateToClient(client);
         client.setCardDomain(card);
-        return clientRepository.save(client);
+        return clientRepository.saveUser(client);
     }
 
     public ClientDomain findByCpf(String cpf){

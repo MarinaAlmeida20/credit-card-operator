@@ -8,7 +8,7 @@ import org.mapstruct.Mapper;
 public interface ClientMapper {
 
 
-    ClientEntity toEntity(ClientDomain clientDomain){
+    ClientEntity toEntity(ClientDomain clientDomain);
 
-    }
+    ClientDomain toDomain(ClientEntity clientEntity);
 }

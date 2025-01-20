@@ -1,5 +1,6 @@
 package com.javanauta.credit_card_operator.adaptor.out;
 
+import com.javanauta.credit_card_operator.adaptor.mapper.ClientMapper;
 import com.javanauta.credit_card_operator.adaptor.out.repository.IClientJpaRepository;
 import com.javanauta.credit_card_operator.application.domain.ClientDomain;
 import com.javanauta.credit_card_operator.ports.out.IClientRepository;
@@ -13,19 +14,25 @@ import java.util.Optional;
 public class ClientRepositoryImpl implements IClientRepository {
 
     private final IClientJpaRepository clientJpaRepository;
+    private final ClientMapper clientMapper;
 
     @Override
-    public ClientDomain save(ClientDomain clientDomain) {
-        return clientJpaRepository.save();
+    public ClientDomain saveUser(ClientDomain clientDomain) {
+        return clientMapper.toDomain(
+                clientJpaRepository.save(
+                        clientMapper.toEntity(clientDomain)
+                )
+        );
     }
 
     @Override
     public Boolean findUserByEmail(String email) {
-        return null;
+        return clientJpaRepository.existsByEmail(email);
     }
 
     @Override
     public Optional<ClientDomain> findUserByCpf(String cpf) {
-        return Optional.empty();
+        return clientJpaRepository.findByCpf(cpf)
+                .map(clientMapper::toDomain);
     }
 }
