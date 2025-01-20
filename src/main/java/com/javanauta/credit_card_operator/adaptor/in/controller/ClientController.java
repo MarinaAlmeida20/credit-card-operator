@@ -1,5 +1,6 @@
 package com.javanauta.credit_card_operator.adaptor.in.controller;
 
+import com.javanauta.credit_card_operator.adaptor.in.dto.response.ClientResponseDto;
 import com.javanauta.credit_card_operator.adaptor.mapper.ClientMapper;
 import com.javanauta.credit_card_operator.adaptor.out.entity.ClientEntity;
 import com.javanauta.credit_card_operator.application.service.ClientService;
@@ -15,7 +16,7 @@ public class ClientController {
     private final ClientMapper mapper;
 
     @PostMapping
-    public ResponseEntity<ClientReponseDto> requestCard(@RequestBody ClientRequestDto clientRequestDTO) {
+    public ResponseEntity<ClientResponseDto> requestCard(@RequestBody ClientRequestDto clientRequestDTO) {
         mapper.toResponse(clienteServicePort.solicitarCartao(mapper.toEntity(clientRequestDTO)));
         return ResponseEntity.ok().build();
     }
