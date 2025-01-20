@@ -16,11 +16,11 @@ public interface ClientMapper {
 
     ClientDomain toDomain(ClientEntity clientEntity);
 
-    @Mapping(target = "card", expression = "java(toCardEntity(client))")
-    ClientEntity toEntity(ClientRequestDto client);
+    @Mapping(target = "card", expression = "java(toCardDomain(client))")
+    ClientDomain toDomain(ClientRequestDto client);
 
-    ClientResponseDto toResponse(ClientEntity client);
+    ClientResponseDto toResponse(ClientDomain client);
 
-    @Mapping(source = "invoice due date", target = "invoiceDueDate")
-    CardEntity toCardEntity(ClientRequestDto clientRequestDto);
+    @Mapping(source = "invoiceDueDate", target = "invoiceDueDate")
+    ClientDomain toCardDomain(ClientRequestDto clientRequestDto);
 }

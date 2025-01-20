@@ -1,9 +1,10 @@
 package com.javanauta.credit_card_operator.adaptor.in.controller;
 
+import com.javanauta.credit_card_operator.adaptor.in.IClientService;
+import com.javanauta.credit_card_operator.adaptor.in.dto.request.ClientRequestDto;
 import com.javanauta.credit_card_operator.adaptor.in.dto.response.ClientResponseDto;
 import com.javanauta.credit_card_operator.adaptor.mapper.ClientMapper;
-import com.javanauta.credit_card_operator.adaptor.out.entity.ClientEntity;
-import com.javanauta.credit_card_operator.application.service.ClientService;
+import com.javanauta.credit_card_operator.application.domain.ClientDomain;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,18 +13,18 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/client")
 public class ClientController {
-    private final ClientService clientServicePort;
+    private final IClientService clientService;
     private final ClientMapper mapper;
 
     @PostMapping
     public ResponseEntity<ClientResponseDto> requestCard(@RequestBody ClientRequestDto clientRequestDTO) {
-        mapper.toResponse(clienteServicePort.solicitarCartao(mapper.toEntity(clientRequestDTO)));
+        mapper.toResponse(clientService.requestCard(mapper.toDomain(clientRequestDTO)));
         return ResponseEntity.ok().build();
     }
 
     @GetMapping
-    public ResponseEntity<ClientReponseDto> findClientByCpf(@RequestParam String cpf) {
-        ClientEntity client = clientServicePort.findByCpf(cpf);
+    public ResponseEntity<ClientResponseDto> findClientByCpf(@RequestParam String cpf) {
+        ClientDomain client = clientService.findByCpf(cpf);
         return ResponseEntity.ok(mapper.toResponse(client));
     }
 }
